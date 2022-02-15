@@ -2,6 +2,7 @@
     "name": "logikbarn/php-postup-client",
     "description": "An unofficial PHP API wrapper for the email marketing platform PostUp.",
     "type": "library",
+    "license": "MIT",
     "autoload": {
         "psr-4": {
             "Logikbarn\\PhpPostupClient\\": "src/"
