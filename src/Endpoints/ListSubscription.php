@@ -58,7 +58,7 @@ class ListSubscription extends Endpoint
      *                              status returned in the response.
      * @param string $source_id     - Description of where the recipient signed up 
      *                              for this list.
-     * @param bool   $confirmed     - Confirmed = "true" or Unconfirmed = "false"
+     * @param string $confirmed     - Confirmed = "true" or Unconfirmed = "false"
      *
      * @return object The API response object
      */
