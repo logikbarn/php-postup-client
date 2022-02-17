@@ -69,9 +69,10 @@ class ListSubscription extends Endpoint
         string $list_status = null,
         string $global_status = null,
         string $source_id = null,
-        bool $confirmed = null 
+        string $confirmed = null 
     ) { 
         Validator::oneOf($status, [ 'NORMAL', 'UNSUB' ]);
+        Validator::oneOf($confirmed, [ 'true', 'false' ], false);
 
         return $this->client->request(
             'POST',
