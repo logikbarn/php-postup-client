@@ -58,7 +58,7 @@ class ListSubscription extends Endpoint
      *                              status returned in the response.
      * @param string $source_id     - Description of where the recipient signed up 
      *                              for this list.
-     * @param bool   $confirmed     - Confirmed = "true" or Unconfirmed = "false"
+     * @param string $confirmed     - Confirmed = "true" or Unconfirmed = "false"
      *
      * @return object The API response object
      */
@@ -69,9 +69,10 @@ class ListSubscription extends Endpoint
         string $list_status = null,
         string $global_status = null,
         string $source_id = null,
-        bool $confirmed = null 
+        string $confirmed = null 
     ) { 
         Validator::oneOf($status, [ 'NORMAL', 'UNSUB' ]);
+        Validator::oneOf($confirmed, [ 'true', 'false' ], false);
 
         return $this->client->request(
             'POST',
