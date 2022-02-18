@@ -158,7 +158,7 @@ Class Recipient extends Endpoint
         array $demographics             = null,
         string $password                = null 
     ) {
-        Validator::oneOf($channel, [ 'E', 'S', 'P' ]);
+        Validator::oneOf($channel, [ 'E', 'S', 'P' ], false);
         Validator::oneOf($status, [ 'N', 'U', 'H' ], false);
         Validator::isDate($third_party_signup_date, false);
 
