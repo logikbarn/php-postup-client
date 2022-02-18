@@ -22,6 +22,7 @@ namespace Logikbarn\PhpPostupClient;
 
 use Logikbarn\PhpPostupClient\Utilities\Formatter;
 use Logikbarn\PhpPostupClient\Utilities\Validator;
+use Logikbarn\PhpPostupClient\Exceptions\ConnectionException;
 
 /**
  * Api
@@ -137,7 +138,7 @@ class Api
 
         // Throw a server error if unable to connect
         if ($response === false ) {
-            throw new Exceptions\ValidatorException(
+            throw new ConnectionException(
                 'Unable to connect to PostUp', 
                 500
             );
