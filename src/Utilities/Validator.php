@@ -89,13 +89,14 @@ class Validator
      * 
      * Description.
      *
-     * @param object $date - The date object
+     * @param object $date     - The date object
+     * @param bool   $required - If it can be safely ignored on failure.
      * 
      * @return void
      */
-    public static function isDate( object $date )
+    public static function isDate( object $date, bool $required = true )
     {
-        if (!$date instanceof \DateTime ) {
+        if (!$date instanceof \DateTime && $required ) {
             throw new ValidatorException(
                 'A valid PHP DateTime object must be provided. ',
                 0
