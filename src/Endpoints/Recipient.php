@@ -85,7 +85,10 @@ Class Recipient extends Endpoint
     ) {
         Validator::oneOf($channel, [ 'E', 'S', 'P' ]);
         Validator::oneOf($status, [ 'N', 'U', 'H' ], false);
-        Validator::isDate($third_party_signup_date, false);
+
+        if( !is_null( $third_party_signup_date ) ) {
+            Validator::isDate($third_party_signup_date, false);
+        }
 
         if (isset($demographics) ) {
             $demographics = Formatter::demographicsToString($demographics);
@@ -101,9 +104,11 @@ Class Recipient extends Endpoint
             'sourceDescription'    => $source_description,
             'signupIP'             => $signup_ip,
             'thirdPartySource'     => $third_party_source,
-            'thirdPartySignupDate' => $third_party_signup_date->format(
-                'Y-m-d\TH:i:s\Z'
-            ),
+            'thirdPartySignupDate' => $third_party_signup_date !== null 
+                                        ? $third_party_signup_date->format(
+                                            'Y-m-d\TH:i:s\Z'
+                                        )
+                                        : null,
             'demographics'         => $demographics,
             'password'             => $password,
             ]
@@ -160,7 +165,10 @@ Class Recipient extends Endpoint
     ) {
         Validator::oneOf($channel, [ 'E', 'S', 'P' ], false);
         Validator::oneOf($status, [ 'N', 'U', 'H' ], false);
-        Validator::isDate($third_party_signup_date, false);
+        
+        if( isset( $third_party_signup_date ) ) {
+            Validator::isDate($third_party_signup_date, false);
+        }
 
         if (isset($demographics) ) {
             $demographics = Formatter::demographicsToString($demographics);
@@ -175,9 +183,11 @@ Class Recipient extends Endpoint
             'sourceDescription'    => $source_description,
             'signupIP'             => $signup_ip,
             'thirdPartySource'     => $third_party_source,
-            'thirdPartySignupDate' => $third_party_signup_date->format(
-                'Y-m-d\TH:i:s\Z'
-            ),
+            'thirdPartySignupDate' => $third_party_signup_date !== null 
+                                        ? $third_party_signup_date->format(
+                                            'Y-m-d\TH:i:s\Z'
+                                        )
+                                        : null,
             'password'             => $password,
             'resubscribe'          => $resubscribe,
             'demographics'         => $demographics,
